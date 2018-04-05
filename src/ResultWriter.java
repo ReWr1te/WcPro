@@ -58,7 +58,7 @@ public class ResultWriter {
     }
 
     //输入单词统计信息，将其写入文件
-    public void writerResult(HashMap<String,Integer> result){
+    public void writeResult(HashMap<String,Integer> result){
         List<Map.Entry<String,Integer>> list=sort(result);
         output(list);
     }
