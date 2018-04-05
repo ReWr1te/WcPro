@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class CommandParser {
 
-    public String parseCommand(String[] args) throws Exception {
+    public String parseCommand(String[] args) {
 
     	// initiate variables
 
