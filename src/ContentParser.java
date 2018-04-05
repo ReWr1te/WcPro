@@ -7,11 +7,11 @@ public class ContentParser {
     public HashMap<String, Integer> parseContent(String str) {
         HashMap<String, Integer> hashMap = new HashMap<>();
 
-        String regEx = "[a-zA-Z]+-[a-zA-Z]+|[a-zA-Z]+";
+        String regEx = "[a-zA-Z]+(-[a-zA-Z]+)*";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(str);
         while (matcher.find()) {
-            String tmp = matcher.group();
+            String tmp = matcher.group().toLowerCase();
             if (hashMap.containsKey(tmp)) {
                 hashMap.replace(tmp, hashMap.get(tmp) + 1);
             } else {
