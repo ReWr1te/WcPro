@@ -1,6 +1,11 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public class CommandParser {
-    //输入命令行命令，返回文件内容
-    public String parseCommand(String[] args) {
+
+    public String parseCommand(String[] args) throws Exception {
 
     	// initiate variables
 
