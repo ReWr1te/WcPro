@@ -21,7 +21,7 @@ public class ResultWriter {
      * 词频排序
      * @return
      */
-    public List<Map.Entry<String,Integer>> sort(HashMap<String,Integer> hMap){
+    private List<Map.Entry<String,Integer>> sort(HashMap<String,Integer> hMap){
         List<Map.Entry<String,Integer>> list=new ArrayList<>();
         list.addAll(hMap.entrySet());
         ValueComparator vc=new ValueComparator();
