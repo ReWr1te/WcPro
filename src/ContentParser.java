@@ -9,7 +9,9 @@ public class ContentParser {
     @Test
     public HashMap<String, Integer> parseContent(String str) {
         HashMap<String, Integer> hashMap = new HashMap<>();
-
+        if (str == null || "".equals(str)) {
+            return hashMap;
+        }
         String regEx = "[a-zA-Z]+(-[a-zA-Z]+)*";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(str);

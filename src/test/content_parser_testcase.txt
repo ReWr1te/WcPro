@@ -1,18 +1,87 @@
-hello world
-hello world
-1 1
-hua-ke hua-ke hua-zhong-Duan-dian -da-xue-
-hua-ke hua-zhong-duan-dian da-xue
-2 1 1
-Let’s
-let s
-1 1
-“I
-i
+》等价类划分：  字母          -       数字  特殊字符（除-）
+》》》》testcase start 》》》》
+》              0          0        0      0
+
+
+
+》              0          0        0      1
+~`!#%^&*_...()[]+=:;“‘|< > ,./?
+
+
+》              0          0        1      0
+1 12 123
+
+
+》              0          0        1      1
+~`!#%^&*_...()[]+=:;“‘|< > ,./?1 ~`!#12%^&*_...123()[]+=132:22113;“‘|< > ,./?
+
+
+》              0          1        0      0
+- -- --- ----- ---------
+
+
+》              0          1        0      1
+~`!#%^&*_...()[]+=:;“‘|< > ,.---/? ~`!#%^&*_...()[]+=:;“‘|< > ,./?-
+
+
+》              0          1        1      0
+-1 -12- 123-123
+
+
+》              0          1        1      1
+~`!#%^&*_...()[]+=-234:;“-‘|< ---> -,./? --~`!#112%^2&*_...()[]+=:;“‘|< > ,./?1-
+
+
+》              1          0        0      0
+f Hello world no hello
+hello world f no
+2 1 1 1
+》              1          0        0      1
+~`f!#%Hello^&*_world...(no)[]+=:;“‘|<hello > ,./?
+hello world f no
+2 1 1 1
+》              1          0        1      0
+f1 Hello12 world1 no123 hello2
+hello world f no
+2 1 1 1
+》              1          0        1      1
+~`!1#f%^12&*_...Hello(123)[]+world=:1;“‘|< 123> ,.no/?  ~12`!#%^&hello*_...(23)[]+=:123;“‘|< > ,./?
+hello world f no
+2 1 1 1
+》              1          1        0      0
+-f Hello- wor-ld no- hel-lo-hel-lo
+f hello wor-ld no hel-lo-hel-lo
+1 1 1 1 1
+》              1          1        0      1
+~`-f!#%Hello-^&*_.wor-ld..()[no-]+=:;“‘|< > ,./?  ~`hel-lo-hel-lo!#%^&*_...()[]+=:;“‘|< > ,./?
+f hello wor-ld no hel-lo-hel-lo
+1 1 1 1 1
+》              1          1        1      0
+-f Hello-1wor-ld123no-12hel-lo-hel-lo
+f hello wor-ld no hel-lo-hel-lo
+1 1 1 1 1
+》              1          1        1      1
+~`-f!#1%Hello-^&*_.wor-ld..(123)[no-]+=:123;“‘|< > ,.23/?  ~`hel-lo-hel-lo!#%345^&*_...()[]+=:;123“‘|< > ,./?
+f hello wor-ld no hel-lo-hel-lo
+1 1 1 1 1
+》》》》testcase end 》》》》
+》白盒测试： 根据路径划分
+》》》》testcase start 》》》》
+》null测试由代码静态添加
+》空串测试
+
+
+
+》while内分支1
+hello
+hello
 1
-TABLE1-2
-table
-1
-(see Box 3–2).8885d_c01_016
-see box d c
-1 1 1 1
+》while内分支2
+hello Hello
+hello
+2
+》不进while
+123~`!#%^&*_...()[]+=:;“‘|< > ,./--?
+
+
+》》》》testcase end 》》》》

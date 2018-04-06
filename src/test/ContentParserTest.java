@@ -50,16 +50,23 @@ public void after() throws Exception {
             bufferedReader = new BufferedReader(new FileReader(file));
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
+                if (str.contains("》")) {
+                    continue;
+                }
+                HashMap<String, Integer> tmpMap = new HashMap<>();
+
                 String wordString = bufferedReader.readLine();
                 String amountString = bufferedReader.readLine();
                 String[] words = wordString.split(" ");
                 String[] amount = amountString.split(" ");
-                HashMap<String, Integer> tmpMap = new HashMap<>();
+
                 if (words.length != amount.length) {
                     throw new Exception("test case word amount don't match");
                 }
-                for (int i = 0; i < words.length; i++) {
-                    tmpMap.put(words[i], Integer.valueOf(amount[i]));
+                if (!wordString.equals("")) {
+                    for (int i = 0; i < words.length; i++) {
+                        tmpMap.put(words[i], Integer.valueOf(amount[i]));
+                    }
                 }
                 stringArrayList.add(str);
                 resultList.add(tmpMap);
@@ -76,6 +83,9 @@ public void after() throws Exception {
             }
             bufferedReader = null;
         }
+        //add null test
+        stringArrayList.add(null);
+        resultList.add(new HashMap<String, Integer>());
         //convert test case to collection
         Object[][] result = new Object[stringArrayList.size()][2];
         for (int i = 0; i < stringArrayList.size(); i++) {
