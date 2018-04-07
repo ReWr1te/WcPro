@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class ResultWriter {
-    private final String pathOfOutput="result.txt";
+    //private final String pathOfOutput="result.txt";
 
     /**
      * 排序类
@@ -47,13 +47,15 @@ public class ResultWriter {
      * 输出
      */
     private void output(List<Map.Entry<String,Integer>> list){
+        final String pathOfOutput="result.txt";
         String outContent="";
         Map.Entry<String,Integer> oMap;
         int i=0;
-        for(Iterator<Map.Entry<String,Integer>> it=list.iterator();it.hasNext()&&i<100;++i){
+        for(Iterator<Map.Entry<String,Integer>> it=list.iterator();it.hasNext()&&i<100;++i){//仅输出单词词频从高到低排序的前100个（从1到100）
             oMap=it.next();
             outContent+=oMap.getKey()+" "+oMap.getValue()+"\n";
         }
+        outContent=outContent.substring(0,outContent.length()-1);//去除输出文件末尾多余的换行符
         append(pathOfOutput,outContent);
     }
 
