@@ -11,5 +11,10 @@
 | 邱利光  | void writeResult(HashMap<String, Integer> result) | 输入单词统计信息，将其写入文件 |
 | 沃锦文  | GUI                                      | GUI界面完成人机交互     |
 
+测试环境：
+Windows 10专业版
+jdk1.8.0_121
+
+*jQuery.txt为压力测试文件
 
 

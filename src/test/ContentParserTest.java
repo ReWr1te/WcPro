@@ -71,6 +71,8 @@ public void after() throws Exception {
                 stringArrayList.add(str);
                 resultList.add(tmpMap);
             }
+            bufferedReader.close();
+            bufferedReader = null;
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
