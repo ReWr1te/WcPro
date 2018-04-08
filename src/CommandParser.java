@@ -3,59 +3,63 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class CommandParser {
+import java.awt.Frame;
+import java.awt.FileDialog;
 
-	// judge the input parameters
-	public int paraHandling(String[] args) {
+public class CommandParser {
+	// handle the input parameters
+	public String paraHandling(String[] args) {
+		String path = null;
 		if (args.length == 0) {
-			System.out.println("No parameter! Please input one parameter!");
-			return 0;
+			Frame frame = new Frame();
+			FileDialog openFile = new FileDialog(frame, "打开文件", FileDialog.LOAD);
+			openFile.setVisible(true);
+			String dirName = openFile.getDirectory();
+			String fileName = openFile.getFile();
+			if ((dirName == null) || (fileName == null)) {
+				System.out.println("You didn't choose a file!");
+				frame.dispose();
+				return null;
+			} else {
+				path = dirName + fileName;
+				frame.dispose();
+				return path;
+			}
 		} else if (args.length > 1){
 			System.out.println("Too many parameters! Please input just one parameter!");
-			return 0;
+			return null;
 		} else {
-			if (args[0].indexOf(":") != -1 || args[0].indexOf("/") != -1 || args[0].indexOf("\\") != -1) {
-				System.out.println("No paths!");
-				return 0;
-			}
 			if (args[0].indexOf("*.") != -1) {
 				System.out.println("Too many files! Please input just one file!");
-				return 0;
+				return null;
 			}
 			if (args[0].indexOf(".txt") == -1) {
 				System.out.println("Wrong file type! Please input .txt files!");
-				return 0;
+				return null;
 			}
-			return 1;
+			if (args[0].indexOf(":") != -1 || args[0].indexOf("/") != -1 || args[0].indexOf("\\") != -1) {
+				path = args[0];
+			} else {
+				path = getPath(args[0]);
+			}
+			return path;
 		}
 	}
 
-	// get the address
-	public String getAddress(String fileName) {
-
-		// initiate variables
-		String os, address = "";
-
-		// differ operating systems
-		os = System.getProperty("os.name");
-		if (os.indexOf("Mac") != -1)
-			address = System.getProperty("user.dir") + "/" + fileName; // OSX
-		else if (os.indexOf("Win") != -1)
-			address = System.getProperty("user.dir") + "\\" + fileName; // Windows
-		return address;
-	}
-
 	// get the content
-	public String getContent(FileReader fr, BufferedReader br, StringBuffer sb, String address) {
+	public String getContent(String path) {
 
 		// initiate variables
 		String content = "", line;
+		FileReader fr = null;
+		BufferedReader br = null;
+		StringBuffer sb= null;
 
 		// begin reading
 		try {
 
 			// read file according to address
-			fr = new FileReader(address);
+			fr = new FileReader(path);
 			br = new BufferedReader(fr);
 			sb = new StringBuffer();
 
@@ -81,7 +85,20 @@ public class CommandParser {
 		}
 		return content;
 	}
-
+	
+	// get the address
+	public String getPath(String fileName) {
+		// initiate variables
+		String os, path = "";
+		// differ operating systems
+		os = System.getProperty("os.name");
+		if (os.indexOf("Mac") != -1)
+			path = System.getProperty("user.dir") + "/" + fileName; // OSX
+		else if (os.indexOf("Win") != -1)
+			path = System.getProperty("user.dir") + "\\" + fileName; // Windows
+		return path;
+	}
+	
 	// check half-width characters
 	public int halfWidthChar(String content) {
 		if (content.getBytes().length == content.length())
@@ -97,21 +114,19 @@ public class CommandParser {
 
     	// initiate variables
 		// initiate content file, each line, filename and address to store related info
-		String address, content;
-
-		// initiate file reader, buffered reader and string buffer to store file medially
-		FileReader fileReader = null;
-		BufferedReader bufferedReader = null;
-		StringBuffer stringBuffer = null;
+		String path, content;
 
 		// call the functions to get address and then content
-		if (paraHandling(args) != 1)
+		path = paraHandling(args);
+		if (path == null)
 			return null; // to return a void result
 		else {
-			address = getAddress(args[0]);
-			content = getContent(fileReader, bufferedReader, stringBuffer, address);
-			if (halfWidthChar(content) == 0) return null;
-			else return content;
+			content = getContent(path);
+			if (halfWidthChar(content) == 0) {
+				return null;
+			} else {
+				return content;
+			}
 		}
     }
 }
