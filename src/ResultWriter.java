@@ -54,7 +54,9 @@ public class ResultWriter {
             oMap=it.next();
             outContent+=oMap.getKey()+" "+oMap.getValue()+"\n";
         }
-        outContent=outContent.substring(0,outContent.length()-1);//去除输出文件末尾多余的换行符
+        if(outContent.length()>0) {
+            outContent = outContent.substring(0, outContent.length() - 1);//去除输出文件末尾多余的换行符
+        }
         writeFile(pathOfOutput,outContent);
         return outContent;
     }
