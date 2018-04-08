@@ -71,7 +71,9 @@ public class CommandParser {
 			content = sb.toString(); // change file contents to the type of String
 
 		} catch (FileNotFoundException e) { // to catch exceptions
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("This File doesn't exist!");
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -122,7 +124,8 @@ public class CommandParser {
 			return null; // to return a void result
 		else {
 			content = getContent(path);
-			if (halfWidthChar(content) == 0) {
+			//judge whether content is null
+			if (content==null||halfWidthChar(content) == 0) {
 				return null;
 			} else {
 				return content;
