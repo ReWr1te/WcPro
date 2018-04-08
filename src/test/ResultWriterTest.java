@@ -49,7 +49,7 @@ public class ResultWriterTest {
         ArrayList<String> outContentList=new ArrayList<>();
         //read test case from txt
         try {
-            File file = new File("./src/test/result_writer_testcase.txt");
+            File file = new File("F:\\LearnProgrammingInformation\\java\\WcPro\\src\\test\\result_writer_testcase.txt");
             bufferedReader = new BufferedReader(new FileReader(file));
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
@@ -93,6 +93,10 @@ public class ResultWriterTest {
                                 outContentList.add(tmpString);
                                 break;
                             }
+                        }
+                        if(str==null){
+                            tmpString=tmpString.substring(0,tmpString.length()-1);
+                            outContentList.add(tmpString);
                         }
                     }
                 }
