@@ -12,6 +12,10 @@ import static org.junit.Assert.*;
  *  which is a JUnit class for testing class CommandParser
  */
 
+/**
+ * @reviser Wo Jinwen, Lovegood
+ */
+
 public class CommandParserTest {
     private CommandParser cp;
 
