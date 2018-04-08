@@ -39,7 +39,10 @@ public class ResultWriterTest {
     @After
     public void tearDown() throws Exception {
     }
-
+    
+    /**
+     * refer to 81BlingBling18's test code,who is my teammate
+     **/
     @Parameterized.Parameters
     public static Collection parameters() {
         //System.out.println("enter this method");
@@ -49,7 +52,7 @@ public class ResultWriterTest {
         ArrayList<String> outContentList=new ArrayList<>();
         //read test case from txt
         try {
-            File file = new File("F:\\LearnProgrammingInformation\\java\\WcPro\\src\\test\\result_writer_testcase.txt");
+            File file = new File("./src/test/result_writer_testcase.txt");
             bufferedReader = new BufferedReader(new FileReader(file));
             String str = null;
             while ((str = bufferedReader.readLine()) != null) {
