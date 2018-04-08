@@ -11,29 +11,33 @@ public class CommandParser {
 	public String paraHandling(String[] args) {
 		String path = null;
 		if (args.length == 0) {
-			Frame frame = new Frame();
-			FileDialog openFile = new FileDialog(frame, "打开文件", FileDialog.LOAD);
-			openFile.setVisible(true);
-			String dirName = openFile.getDirectory();
-			String fileName = openFile.getFile();
-			if ((dirName == null) || (fileName == null)) {
-				System.out.println("You didn't choose a file!");
-				frame.dispose();
-				return null;
-			} else {
-				path = dirName + fileName;
-				frame.dispose();
-				return path;
-			}
-		} else if (args.length > 1){
+			System.out.println("Please enter parameter!");
+			return null;
+		} else if (args.length > 1) {
 			System.out.println("Too many parameters! Please input just one parameter!");
 			return null;
 		} else {
+			if (args[0].equals("-x")) {
+				Frame frame = new Frame();
+				FileDialog openFile = new FileDialog(frame, "打开一个txt文件", FileDialog.LOAD);
+				openFile.setVisible(true);
+				String dirName = openFile.getDirectory();
+				String fileName = openFile.getFile();
+				if ((dirName == null) || (fileName == null)) {
+					System.out.println("You didn't choose a file!");
+					frame.dispose();
+					return null;
+				} else {
+					path = dirName + fileName;
+					frame.dispose();
+					return path;
+				}
+			}
 			if (args[0].indexOf("*.") != -1) {
 				System.out.println("Too many files! Please input just one file!");
 				return null;
 			}
-			if (args[0].indexOf(".txt") == -1) {
+			if (!args[0].endsWith(".txt")) {
 				System.out.println("Wrong file type! Please input .txt files!");
 				return null;
 			}
@@ -91,13 +95,8 @@ public class CommandParser {
 	// get the address
 	public String getPath(String fileName) {
 		// initiate variables
-		String os, path = "";
-		// differ operating systems
-		os = System.getProperty("os.name");
-		if (os.indexOf("Mac") != -1)
-			path = System.getProperty("user.dir") + "/" + fileName; // OSX
-		else if (os.indexOf("Win") != -1)
-			path = System.getProperty("user.dir") + "\\" + fileName; // Windows
+		String path;
+		path = System.getProperty("user.dir") + "/" + fileName;
 		return path;
 	}
 	
