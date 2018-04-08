@@ -6,8 +6,17 @@ import java.io.IOException;
 import java.awt.Frame;
 import java.awt.FileDialog;
 
+/**
+ * @author Administrator
+ * Tian Shiyuan, SSE, HUST
+ */
+
+/**
+ * @reviser Wo Jinwen, Lovegood
+ */
+
 public class CommandParser {
-	// handle the input parameters
+	/** handle the input parameters*/
 	public String paraHandling(String[] args) {
 		String path = null;
 		if (args.length == 0) {
@@ -59,29 +68,30 @@ public class CommandParser {
 		BufferedReader br = null;
 		StringBuffer sb= null;
 
-		// begin reading
+		/** begin reading */
 		try {
-
-			// read file according to address
+			/** read file according to address */
 			fr = new FileReader(path);
 			br = new BufferedReader(fr);
 			sb = new StringBuffer();
 
-			// read all lines
+			/** read all lines */
 			while ((line = br.readLine()) != null) {
 				sb.append(line);
-				sb.append('\n'); // add \n to go to next line
+				sb.append('\n');
+				/** add \n to go to next line */
 			}
-			content = sb.toString(); // change file contents to the type of String
-
-		} catch (FileNotFoundException e) { // to catch exceptions
-			//e.printStackTrace();
+			content = sb.toString();
+			/** change file contents to the type of String */
+		} catch (FileNotFoundException e) {
+			/** to catch exceptions */
 			System.out.println("This File doesn't exist!");
 			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (br != null) { // to check whether the buffered reader is closed
+			/** to check whether the buffered reader is closed */
+			if (br != null) { 
 				try {
 					br.close();
 				} catch (IOException e) {
@@ -92,15 +102,15 @@ public class CommandParser {
 		return content;
 	}
 	
-	// get the address
+	/** get the address */
 	public String getPath(String fileName) {
-		// initiate variables
+		/** initiate variables */
 		String path;
 		path = System.getProperty("user.dir") + "/" + fileName;
 		return path;
 	}
 	
-	// check half-width characters
+	/** check half-width characters */
 	public int halfWidthChar(String content) {
 		if (content.getBytes().length == content.length())
 			return 1;
@@ -110,20 +120,21 @@ public class CommandParser {
 		}
 	}
 
-	// get the content in a file and return the result
+	/** get the content in a file and return the result */
     public String parseCommand(String[] args) {
 
-    	// initiate variables
-		// initiate content file, each line, filename and address to store related info
+    	/** initiate variables
+			initiate content file, each line, filename and address to store related info */
 		String path, content;
 
-		// call the functions to get address and then content
+		/** call the functions to get address and then content */
 		path = paraHandling(args);
 		if (path == null)
-			return null; // to return a void result
+			return null;
+			/** to return a void result */
 		else {
 			content = getContent(path);
-			//judge whether content is null
+			/** judge whether content is null */
 			if (content==null||halfWidthChar(content) == 0) {
 				return null;
 			} else {
