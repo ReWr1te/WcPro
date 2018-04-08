@@ -5,25 +5,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ContentParser {
+    private String regEx = "[a-zA-Z]+(-[a-zA-Z]+)*";
+    private Pattern pattern = Pattern.compile(regEx);
     //输入文件内容，返回单词统计信息
     @Test
-    public HashMap<String, Integer> parseContent(String str) {
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        if (str == null || "".equals(str)) {
-            return hashMap;
+    public HashMap<String, Integer> parseContent(String content) {
+        HashMap<String, Integer> wordMap = new HashMap<>();
+        if (content == null || "".equals(content)) {
+            return wordMap;
         }
-        String regEx = "[a-zA-Z]+(-[a-zA-Z]+)*";
-        Pattern pattern = Pattern.compile(regEx);
-        Matcher matcher = pattern.matcher(str);
+        Matcher matcher = pattern.matcher(content);
         while (matcher.find()) {
-            String tmp = matcher.group().toLowerCase();
-            if (hashMap.containsKey(tmp)) {
-                hashMap.replace(tmp, hashMap.get(tmp) + 1);
+            String word = matcher.group().toLowerCase();
+            if (wordMap.containsKey(word)) {
+                wordMap.replace(word, wordMap.get(word) + 1);
             } else {
-                hashMap.put(tmp, 1);
+                wordMap.put(word, 1);
             }
         }
 
-        return hashMap;
+        return wordMap;
     }
 }
