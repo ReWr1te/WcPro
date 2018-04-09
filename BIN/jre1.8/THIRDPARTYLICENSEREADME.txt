@@ -1527,7 +1527,7 @@ which may be included with JRE 8, JDK 8, and OpenJDK 8 source distributions.
 -------------------------------------------------------------------------------
 
 %% This notice is provided with respect to Mozilla Network Security
-Services (NSS), which is supplied with the JDK test suite in the OpenJDK
+Services (NSS), which is supplied with the JDK UnitTest suite in the OpenJDK
 source code repository. It is licensed under Mozilla Public License (MPL),
 version 2.0.
 
@@ -1535,10 +1535,10 @@ The NSS libraries are supplied in executable form, built from unmodified
 NSS source code labeled with the "NSS_3_16_RTM" HG tag.
 
 The NSS source code is available in the OpenJDK source code repository at:
-    jdk/test/sun/security/pkcs11/nss/src
+    jdk/UnitTest/sun/security/pkcs11/nss/src
 
 The NSS libraries are available in the OpenJDK source code repository at:
-    jdk/test/sun/security/pkcs11/nss/lib
+    jdk/UnitTest/sun/security/pkcs11/nss/lib
 
 --- begin of LICENSE ---
 
